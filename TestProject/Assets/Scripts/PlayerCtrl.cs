@@ -8,14 +8,16 @@ public class PlayerCtrl : MonoBehaviour
 
     private float h = 0.0f;
     private float v = 0.0f;
-    private float r = 0.0f;
+    
 
     private Transform tr; // 접근해야 하는 컴포넌트는 반드시 변수에 할당한 후 사용
     public float moveSpeed = 10.0f; // 이동속도
     public float rotSpeed = 80.0f; // 회전속도
     public float jumpPower = 5.0f; // 점프 파워
+    public int playerHP = 10; // 플레이어의 HP
     private Animator animator; // 애니메이터 컴포넌트를 추출하고 저장하는 변수
     private Rigidbody rigidbody; // rigidbody 컴포넌트를 추출하고 저장하는 변수
+
 
     bool isAttack;
     bool isJump;
@@ -58,9 +60,10 @@ public class PlayerCtrl : MonoBehaviour
     void FixedUpdate()
     {
         Run(h, v);
+        //Jump();
         Turn();
         Hit();
-        Jump();
+        
     }
     void Run(float h, float v)
     {
@@ -86,6 +89,11 @@ public class PlayerCtrl : MonoBehaviour
     
     void Turn()
     {
+        if (h == 0 && v == 0)
+        {
+            rigidbody.AddForce(Vector3.down * jumpPower, ForceMode.Impulse);
+            return;
+        }
         Quaternion rot = Quaternion.LookRotation(moveDir);
         rigidbody.rotation = Quaternion.Slerp(rigidbody.rotation, rot, rotSpeed * Time.deltaTime);
     }

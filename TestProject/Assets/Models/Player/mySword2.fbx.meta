@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 46c886c35bc203b46b82b5dcf9511961
 ModelImporter:
-  serializedVersion: 25
+  serializedVersion: 26
   internalIDToNameTable: []
   externalObjects: {}
   materials:
@@ -38,6 +38,7 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -192,7 +193,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Bone.002_end
+    - boneName: Bone.002
       humanName: Head
       limit:
         min: {x: 0, y: 0, z: 0}
