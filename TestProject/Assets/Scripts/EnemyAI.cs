@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
     public int enemyHP = 1;
     private Animator animator;
     private Rigidbody rigidbody;
+    private BoxCollider boxCollider;
     private bool isDead = false;
 
     void OnTriggerEnter(Collider other)
@@ -21,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
     }
     void Start()
     {
@@ -43,6 +45,6 @@ public class EnemyAI : MonoBehaviour
     {
         animator.SetTrigger("Die");
         Destroy(this.gameObject, 2.0f);
-        
+        boxCollider.enabled = false;
     }
 }

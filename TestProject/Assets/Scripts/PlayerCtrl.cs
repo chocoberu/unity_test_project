@@ -17,10 +17,12 @@ public class PlayerCtrl : MonoBehaviour
     public int playerHP = 10; // 플레이어의 HP
     private Animator animator; // 애니메이터 컴포넌트를 추출하고 저장하는 변수
     private Rigidbody rigidbody; // rigidbody 컴포넌트를 추출하고 저장하는 변수
+    private BoxCollider swordColl; // 플레이어의 검의 BoxCollider 컴포넌트를 저장하는 변수
 
 
     bool isAttack;
     bool isJump;
+    bool _isJump;
 
     Vector3 moveDir;
     WaitForSeconds wsHit;
@@ -31,9 +33,13 @@ public class PlayerCtrl : MonoBehaviour
         tr = GetComponent<Transform>(); // tr에 트랜스폼 컴포넌트 할당
         animator = GetComponent<Animator>(); // animator에 Animator 컴포넌트 할당
         rigidbody = GetComponent<Rigidbody>();
-        wsHit = new WaitForSeconds(0.4f);
+        wsHit = new WaitForSeconds(1.05f);
 
-        isAttack = isJump = false;
+        swordColl = GameObject.FindGameObjectWithTag("Sword").GetComponent<BoxCollider>();
+
+        isAttack = isJump = _isJump = false;
+
+        swordColl.enabled = false;
     }
 
     // Update is called once per frame
@@ -41,8 +47,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-        //r = Input.GetAxis("Mouse X");
-
+        
         //Debug.Log("h = " + h.ToString());
         //Debug.Log("v = " + v.ToString());
 
@@ -53,14 +58,15 @@ public class PlayerCtrl : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.X))
         {
-            isJump = true;
+            if(isJump == false)
+                isJump = _isJump = true;
         }
         
     }
     void FixedUpdate()
     {
         Run(h, v);
-        //Jump();
+        Jump();
         Turn();
         Hit();
         
@@ -89,9 +95,10 @@ public class PlayerCtrl : MonoBehaviour
     
     void Turn()
     {
+        if(!isJump)
+            rigidbody.AddForce(Vector3.down * jumpPower, ForceMode.Impulse);
         if (h == 0 && v == 0)
         {
-            rigidbody.AddForce(Vector3.down * jumpPower, ForceMode.Impulse);
             return;
         }
         Quaternion rot = Quaternion.LookRotation(moveDir);
@@ -103,18 +110,31 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (isAttack)
         {
+            swordColl.enabled = true;
             animator.SetTrigger("isAttack");
             isAttack = false;
+            StartCoroutine(SwordColliderUnEnabled());
         }
     }
-
+    IEnumerator SwordColliderUnEnabled()
+    {
+        yield return wsHit;
+        swordColl.enabled = false;
+    }
     void Jump()
     {
-        if(isJump)
+        if(_isJump)
         {
+            
             animator.SetTrigger("isJump");
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            isJump = false;
+            _isJump = false;
+            StartCoroutine(IsJumpFalse());
         }
+    }
+    IEnumerator IsJumpFalse()
+    {
+        yield return new WaitForSeconds(0.75f);
+        isJump = false;
     }
 }
