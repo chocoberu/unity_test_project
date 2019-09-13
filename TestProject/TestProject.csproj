@@ -666,12 +666,10 @@
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperStateMachine.cs" />
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\DebugDraw.cs" />
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
+    <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\PlayerCtrl.cs" />
     <Compile Include="Assets\Scripts\Sword.cs" />
-    <Compile Include="Assets\Warrior Pack Bundle 3 FREE\Code\IKHands.cs" />
-    <Compile Include="Assets\Warrior Pack Bundle 3 FREE\Code\SmoothFollow.cs" />
-    <Compile Include="Assets\Warrior Pack Bundle 3 FREE\Code\WarriorAnimationDemoFREE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\BlendModesOverlay.shader" />
