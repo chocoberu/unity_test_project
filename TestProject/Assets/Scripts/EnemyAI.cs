@@ -119,6 +119,7 @@ public class EnemyAI : MonoBehaviour
     }
     void EnemyDead()
     {
+        swordObject.GetComponent<BoxCollider>().enabled = false;
         moveAgent.Stop();
         animator.SetTrigger("Die");
         Destroy(this.gameObject, 2.0f);
