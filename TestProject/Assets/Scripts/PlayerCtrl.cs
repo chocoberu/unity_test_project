@@ -18,11 +18,15 @@ public class PlayerCtrl : MonoBehaviour
     private Animator animator; // 애니메이터 컴포넌트를 추출하고 저장하는 변수
     private Rigidbody rigidbody; // rigidbody 컴포넌트를 추출하고 저장하는 변수
     private BoxCollider swordColl; // 플레이어의 검의 BoxCollider 컴포넌트를 저장하는 변수
+    private BoxCollider boxCollider;
+    public GameObject swordObject;
+    private Sword sword;
 
 
     bool isAttack;
     bool isJump;
     bool _isJump;
+    public bool isDead;
 
     Vector3 moveDir;
     WaitForSeconds wsHit;
@@ -33,13 +37,17 @@ public class PlayerCtrl : MonoBehaviour
         tr = GetComponent<Transform>(); // tr에 트랜스폼 컴포넌트 할당
         animator = GetComponent<Animator>(); // animator에 Animator 컴포넌트 할당
         rigidbody = GetComponent<Rigidbody>();
-        wsHit = new WaitForSeconds(1.05f);
+        wsHit = new WaitForSeconds(0.85f);
+        boxCollider = GetComponent<BoxCollider>();
+        sword = swordObject.GetComponent<Sword>();
+        
 
-        swordColl = GameObject.FindGameObjectWithTag("Sword").GetComponent<BoxCollider>();
+        //swordColl = GameObject.FindGameObjectWithTag("Sword").GetComponent<BoxCollider>();
 
-        isAttack = isJump = _isJump = false;
+        isAttack = isJump = _isJump = isDead = false;
 
-        swordColl.enabled = false;
+        //swordColl.enabled = false;
+        wsHit = new WaitForSeconds(0.85f);
     }
 
     // Update is called once per frame
@@ -61,15 +69,24 @@ public class PlayerCtrl : MonoBehaviour
             if(isJump == false)
                 isJump = _isJump = true;
         }
-        
+        if(playerHP <= 0)
+        {
+            if (isDead == false)
+            {
+                PlayerDead();
+                isDead = true;
+            }
+        }
     }
     void FixedUpdate()
     {
-        Run(h, v);
-        Jump();
-        Turn();
-        Hit();
-        
+        if (!isDead)
+        {
+            Run(h, v);
+            Jump();
+            Turn();
+            Hit();
+        }
     }
     void Run(float h, float v)
     {
@@ -110,17 +127,20 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (isAttack)
         {
-            swordColl.enabled = true;
+            //swordColl.enabled = true;
+            sword.SwordAttack(wsHit);
             animator.SetTrigger("isAttack");
             isAttack = false;
-            StartCoroutine(SwordColliderUnEnabled());
+            //StartCoroutine(SwordColliderUnEnabled());
         }
     }
+    /*
     IEnumerator SwordColliderUnEnabled()
     {
         yield return wsHit;
         swordColl.enabled = false;
     }
+    */
     void Jump()
     {
         if(_isJump)
@@ -136,5 +156,17 @@ public class PlayerCtrl : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
         isJump = false;
+    }
+    public void Damaged()
+    {
+        if(playerHP > 0)
+            playerHP--;
+    }
+    void PlayerDead()
+    {
+        animator.SetTrigger("Die");
+        
+        //Destroy(this.gameObject, 2.0f);
+        //boxCollider.enabled = false;
     }
 }
