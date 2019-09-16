@@ -148,6 +148,7 @@ public class PlayerCtrl : MonoBehaviour
             
             animator.SetTrigger("isJump");
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            //rigidbody.MovePosition(transform.position + Vector3.up * jumpPower);
             _isJump = false;
             StartCoroutine(IsJumpFalse());
         }
@@ -157,6 +158,13 @@ public class PlayerCtrl : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         isJump = false;
     }
+    /*
+    void OnCollisionEnter(Collision collision)
+    {
+        if (isJump == true)
+            isJump = false;
+    }
+    */
     public void Damaged()
     {
         if(playerHP > 0)
@@ -165,6 +173,7 @@ public class PlayerCtrl : MonoBehaviour
     void PlayerDead()
     {
         animator.SetTrigger("Die");
+        rigidbody.isKinematic = true;
         
         //Destroy(this.gameObject, 2.0f);
         //boxCollider.enabled = false;

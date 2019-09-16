@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyMoveAgent : MonoBehaviour
 {
 
-    private readonly float traceSpeed = 2.0f;
+    private readonly float traceSpeed = 4.0f;
     private NavMeshAgent agent;
 
     private Vector3 _traceTarget;
