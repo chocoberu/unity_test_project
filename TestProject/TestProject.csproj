@@ -638,13 +638,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Code\CameraController.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Code\GUIControlsFREE.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Code\IKHandsFREE.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Code\RPGCharacterControllerFREE.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Code\RPGCharacterInputControllerFREE.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Code\RPGCharacterMovementControllerFREE.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Code\RPGCharacterWeaponControllerFREE.cs" />
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Scripts\ImageEffectBase.cs" />
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Scripts\ImageEffects.cs" />
@@ -655,17 +648,6 @@
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs" />
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Scripts\Triangles.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\Scripts\Gravity.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\Scripts\SimpleStateMachine.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\BruteForceMesh.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\BSPTree.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperCharacterController.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperCollider.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperCollisionType.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperMath.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperStateMachine.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\DebugDraw.cs" />
-    <Compile Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\EnemyGenerator.cs" />
@@ -737,7 +719,6 @@
     <None Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
     <None Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
     <None Include="Assets\Animation\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\frag_ao.cginc" />
-    <None Include="Assets\Animation\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\README.txt" />
     <None Include="Assets\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Packages\com.unity.2d.sprite\Editor\UI\SpriteEditor\PolygonChangeShapeWindow.uxml" />
     <None Include="Packages\com.unity.2d.sprite\Editor\UI\SpriteEditor\SpriteEditor.uss" />

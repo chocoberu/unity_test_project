@@ -124,6 +124,7 @@ public class EnemyAI : MonoBehaviour
         animator.SetTrigger("Die");
         Destroy(this.gameObject, 2.0f);
         boxCollider.enabled = false;
+        rigidbody.isKinematic = true;
     }
     public void Damaged()
     {
