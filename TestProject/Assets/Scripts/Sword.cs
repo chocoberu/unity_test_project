@@ -41,9 +41,4 @@ public class Sword : MonoBehaviour
         boxCollider.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

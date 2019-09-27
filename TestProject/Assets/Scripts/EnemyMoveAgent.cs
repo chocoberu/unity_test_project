@@ -43,9 +43,4 @@ public class EnemyMoveAgent : MonoBehaviour
         agent.velocity = Vector3.zero;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

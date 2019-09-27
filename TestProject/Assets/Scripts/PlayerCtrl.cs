@@ -150,21 +150,24 @@ public class PlayerCtrl : MonoBehaviour
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             //rigidbody.MovePosition(transform.position + Vector3.up * jumpPower);
             _isJump = false;
-            StartCoroutine(IsJumpFalse());
+            //StartCoroutine(IsJumpFalse());
         }
     }
-    IEnumerator IsJumpFalse()
+    /*IEnumerator IsJumpFalse()
     {
         yield return new WaitForSeconds(0.75f);
         isJump = false;
     }
-    /*
-    void OnCollisionEnter(Collision collision)
-    {
-        if (isJump == true)
-            isJump = false;
-    }
     */
+    private void OnCollisionEnter(Collision coll)
+    {
+        //if (isJump == true)
+        //  isJump = false;
+        if (coll.gameObject.tag == "Floor")
+        {
+            isJump = false;
+        }
+    }
     public void Damaged()
     {
         if(playerHP > 0)

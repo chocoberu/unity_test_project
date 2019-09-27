@@ -36,9 +36,4 @@ public class EnemyGenerator : MonoBehaviour
             yield return ws;
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
