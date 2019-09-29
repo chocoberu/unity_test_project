@@ -9,10 +9,11 @@ public class EnemyGenerator : MonoBehaviour
     public GameObject Enemy;
     private WaitForSeconds ws;
     private PlayerCtrl pCtrl;
+    private int enemyGenCnt = 4;
     // Start is called before the first frame update
     void Start()
     {
-        ws = new WaitForSeconds(10.0f);
+        ws = new WaitForSeconds(7.0f);
         var player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
@@ -23,11 +24,11 @@ public class EnemyGenerator : MonoBehaviour
 
     IEnumerator GenEnemy(WaitForSeconds ws)
     {
-        while(true)
+        while(pCtrl.playerHP > 0)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < enemyGenCnt; i++)
             {
-                Instantiate(Enemy, genPoint[i]);
+                Instantiate(Enemy, genPoint[Random.Range(0,4)]);
             }
             if (pCtrl.isDead)
             {
@@ -35,5 +36,9 @@ public class EnemyGenerator : MonoBehaviour
             }
             yield return ws;
         }
+    }
+    public void SetEnemyGenCnt(int cnt)
+    {
+        enemyGenCnt = cnt;
     }
 }

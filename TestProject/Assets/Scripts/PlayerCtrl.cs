@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerCtrl : MonoBehaviour
 {
 
     private float h = 0.0f;
-    private float v = 0.0f;
+    private float v = 0.0f; // horizontal, vertical
     
-
     private Transform tr; // 접근해야 하는 컴포넌트는 반드시 변수에 할당한 후 사용
     public float moveSpeed = 10.0f; // 이동속도
     public float rotSpeed = 80.0f; // 회전속도
@@ -30,6 +30,7 @@ public class PlayerCtrl : MonoBehaviour
 
     Vector3 moveDir;
     WaitForSeconds wsHit;
+    public Text playerHpText;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,6 +49,7 @@ public class PlayerCtrl : MonoBehaviour
 
         //swordColl.enabled = false;
         wsHit = new WaitForSeconds(0.85f);
+        SetHpText();
     }
 
     // Update is called once per frame
@@ -172,6 +174,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         if(playerHP > 0)
             playerHP--;
+        SetHpText();
     }
     void PlayerDead()
     {
@@ -180,5 +183,9 @@ public class PlayerCtrl : MonoBehaviour
         
         //Destroy(this.gameObject, 2.0f);
         //boxCollider.enabled = false;
+    }
+    void SetHpText()
+    {
+        playerHpText.text = "HP : " + playerHP.ToString();
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     public readonly int Damage = 1; // 칼의 공격력
+    public readonly int point = 10;
     private BoxCollider boxCollider;
+    private GameManager gameManager;
     //WaitForSeconds wsHit;
 
     // Start is called before the first frame update
@@ -14,6 +16,7 @@ public class Sword : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.enabled = false;
         //wsHit = new WaitForSeconds(0.85f);
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
     void OnTriggerEnter(Collider other)
     {
@@ -24,8 +27,12 @@ public class Sword : MonoBehaviour
         }
         if(other.tag == "Enemy")
         {
-            Debug.Log("Enemy 공격 받음");
-            other.gameObject.GetComponent<EnemyAI>().Damaged();
+            if (this.gameObject.tag == "PSword")
+            {
+                Debug.Log("Enemy 공격 받음");
+                other.gameObject.GetComponent<EnemyAI>().Damaged();
+                gameManager.SetScore(point);
+            }
         }
     }
 

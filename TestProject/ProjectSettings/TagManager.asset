@@ -9,6 +9,8 @@ TagManager:
   - Shield
   - Enemy
   - Floor
+  - GameManager
+  - PSword
   layers:
   - Default
   - TransparentFX
